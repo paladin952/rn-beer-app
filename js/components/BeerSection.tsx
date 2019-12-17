@@ -17,7 +17,11 @@ const Margin = styled.View`
   margin-bottom: ${2 * MARGIN};
 `;
 
-export const BeerSection = () => {
+interface Props {
+    foodPairing: string;
+}
+
+export const BeerSection: React.FC<Props> = ({foodPairing}) => {
     const [beers, setBeers] = React.useState<Beer[]>([]);
     const [dialogData, setDialogData] = React.useState<Beer| null>(null);
 
@@ -25,7 +29,7 @@ export const BeerSection = () => {
     const itemHeight = itemWidth * 1.5;
 
     async function loadData() {
-        const beers = await ApiService.getBeers();
+        const beers = await ApiService.getBeers(foodPairing);
         setBeers(beers);
     }
 
@@ -35,7 +39,7 @@ export const BeerSection = () => {
 
     useEffect(() => {
         loadData();
-    });
+    }, []);
 
     return (<>
         <FlatList

@@ -128,7 +128,7 @@ export const BeerDialogComponent: React.FC<Props> = ({beer, onClose}) => {
                 </TextContainer>
 
                 <BeerImageContainer>
-                    <BeerImage source={{uri: beer.image_url}}/>
+                    <BeerImage source={{uri: beer.image_url? beer.image_url : ""}}/>
                 </BeerImageContainer>
             </Container>
 

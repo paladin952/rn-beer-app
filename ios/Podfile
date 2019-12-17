@@ -36,6 +36,8 @@ target 'RNBeerApp' do
 
   pod 'react-native-blur', :path => '../node_modules/@react-native-community/blur'
 
+  pod 'react-native-shake', :path => '../node_modules/react-native-shake'
+
   target 'RNBeerAppTests' do
     inherit! :search_paths
     # Pods for testing

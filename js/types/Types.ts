@@ -1,10 +1,10 @@
 export interface Beer {
     id: number;
-    name: String;
-    tagline: String,
+    name: string;
+    tagline: string,
     abv: number;
-    description: String;
-    food_pairing: String[];
-    image_url: String;
+    description: string;
+    food_pairing: string[];
+    image_url: string;
 
 }

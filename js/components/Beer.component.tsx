@@ -45,7 +45,7 @@ export const BeerComponent: React.FC<Props> = ({beer, width, height, onPress}) =
     return <Container width={width} height={height} onPress={() => onPress(beer)}>
         <>
             <Border>
-                <Image source={{uri: beer.image_url}}/>
+                <Image source={{uri: beer.image_url? beer.image_url : ""}}/>
             </Border>
 
             <AbvText>{beer.abv}%</AbvText>
