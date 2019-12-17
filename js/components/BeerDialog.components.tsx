@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components/native";
-import {Modal, View, Alert} from 'react-native';
+import {Modal, Alert} from 'react-native';
 import {Beer} from "../types/Types";
-import {BlurView, VibrancyView} from "@react-native-community/blur";
+import {BlurView} from "@react-native-community/blur";
 
 
 interface Props {
@@ -94,36 +94,44 @@ const TextContainer = styled.View`
   flex: 1;
 `;
 
+const MAX_LENGTH_TEXT = 100;
+
+const collapse = (text: String) => {
+    if (text && text.length > MAX_LENGTH_TEXT) {
+        text = text.substring(0, MAX_LENGTH_TEXT);
+        text += "...";
+    }
+
+    return text;
+}
+
 export const BeerDialogComponent: React.FC<Props> = ({beer, onClose}) => {
-    return (
-        <Modal
-            animationType="slide"
-            transparent={true}
-            visible={true}
-            onRequestClose={() => {
-                Alert.alert('Modal has been closed.');
-            }}>
-            <Root>
-                <CloseContainer>
-                    <CloseButton onPress={() => onClose()}/>
-                </CloseContainer>
+    return <Modal
+        animationType="slide"
+        transparent={true}
+        visible={true}
+        onRequestClose={() => {
+            Alert.alert('Modal has been closed.');
+        }}>
+        <Root>
+            <CloseContainer>
+                <CloseButton onPress={() => onClose()}/>
+            </CloseContainer>
 
-                <Container>
-                    <TextContainer>
-                        <NameText>{beer.name}</NameText>
-                        <NormaText>{beer.tagline}</NormaText>
-                        <NormaText>{beer.abv}%</NormaText>
-                        <NormaText>{beer.description}</NormaText>
-                        <NormaText>{beer.food_pairing}</NormaText>
-                    </TextContainer>
+            <Container>
+                <TextContainer>
+                    <NameText>{beer.name}</NameText>
+                    <NormaText>{beer.tagline}</NormaText>
+                    <NormaText>{beer.abv}%</NormaText>
+                    <NormaText>{collapse(beer.description)}</NormaText>
+                    <NormaText>{collapse(beer.description)}</NormaText>
+                </TextContainer>
 
-                    <BeerImageContainer>
-                        <BeerImage source={{uri: beer.image_url}}></BeerImage>
-                    </BeerImageContainer>
-                </Container>
+                <BeerImageContainer>
+                    <BeerImage source={{uri: beer.image_url}}/>
+                </BeerImageContainer>
+            </Container>
 
-
-            </Root>
-        </Modal>
-    )
+        </Root>
+    </Modal>
 };

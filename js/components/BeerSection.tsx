@@ -19,7 +19,7 @@ const Margin = styled.View`
 
 export const BeerSection = () => {
     const [beers, setBeers] = React.useState<Beer[]>([]);
-    const [dialogData, setDialogData] = React.useState<Beer>(null);
+    const [dialogData, setDialogData] = React.useState<Beer| null>(null);
 
     const itemWidth = (screenWidth - MARGIN * (NUMBER_OF_COLUMNS + 1)) / NUMBER_OF_COLUMNS;
     const itemHeight = itemWidth * 1.5;
@@ -29,7 +29,7 @@ export const BeerSection = () => {
         setBeers(beers);
     }
 
-    function onClickBeer(beer) {
+    function onClickBeer(beer: Beer) {
         setDialogData(beer);
     }
 
