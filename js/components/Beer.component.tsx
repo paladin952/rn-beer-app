@@ -35,19 +35,21 @@ const Image = styled.Image.attrs({
   flex : 1;
 `;
 
-const AbvText = styled.Text`
+const AbvText = styled.Text.attrs({
+    numberOfLines: 1
+})`
   margin-top: 6;
   text-align: center;
 `;
 
 export const BeerComponent: React.FC<Props> = ({beer, width, height, onPress}) => {
-
     return <Container width={width} height={height} onPress={() => onPress(beer)}>
         <>
             <Border>
                 <Image source={{uri: beer.image_url? beer.image_url : ""}}/>
             </Border>
 
+            <AbvText>{beer.name}</AbvText>
             <AbvText>{beer.abv}%</AbvText>
         </>
     </Container>
