@@ -37,5 +37,5 @@
 
 
 | 1 | 2 | 3 | 4 | 5 | 6 |
-| -------- | -------- | -------- | -------- | -------- |
+| -------- | -------- | -------- | -------- | -------- | -------- |
 |![Alt text](public/1.png?raw=true "1")|![Alt text](public/2.png?raw=true "1")|![Alt text](public/3.png?raw=true "1")|![Alt text](public/4.png?raw=true "1")|![Alt text](public/5.png?raw=true "1")|![Alt text](public/6.png?raw=true "1")|
