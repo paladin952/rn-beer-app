@@ -8,7 +8,7 @@
     - cd ..
     - yarn react-native run-ios or yarn react-native run-android
 
-### In order to test shake make sure that you close the RN DEV ASAP menu and then wait a few second to get the Sorting pop-up. If you don't close the RN dev menu pop-up might not appear in ios
+### In order to test shake make sure that you close the RN DEV menu ASAP and then wait a few second to get the sorting pop-up. If you don't close the RN dev menu pop-up might not appear in ios
 
 
 
