@@ -24,28 +24,26 @@ const Title = styled.Text`
   font-size: 18;
 `;
 
-const Root = styled.View`
-  flex: 1;
-`;
-
-const ContentContainer = styled.View`
+const FullContainer = styled.View`
   flex: 1;
 `;
 
 const App = () => {
     return (
-        <Root>
+        <FullContainer>
             <StatusBarContainer>
                 <SafeAreaView>
                     <StatusBar translucent backgroundColor={"red"} barStyle="light-content"/>
                 </SafeAreaView>
             </StatusBarContainer>
 
-            <ContentContainer>
-                <TopBar><Title>BrewDawg</Title></TopBar>
+            <FullContainer>
+                <TopBar>
+                    <Title>BrewDawg</Title>
+                </TopBar>
                 <MainPage/>
-            </ContentContainer>
-        </Root>
+            </FullContainer>
+        </FullContainer>
     );
 };
 

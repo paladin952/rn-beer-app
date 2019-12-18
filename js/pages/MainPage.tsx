@@ -10,10 +10,7 @@ const RootContainer = styled.View`
 `;
 
 export const MainPage = () => {
-
     return <RootContainer>
-
         <FoodTypeBarController/>
-
     </RootContainer>
 };

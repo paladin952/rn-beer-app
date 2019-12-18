@@ -6,7 +6,7 @@ import {Colors} from "../types/Colors";
 //@ts-ignore
 import RNShake from 'react-native-shake';
 import {BeerSordDialogComponent} from "../components/BeerSordDialog.component";
-import BeerSection from "./beer/BeerSection";
+import BeerSection from "./BeerSection";
 import {SortType} from "../types/Types";
 
 const SHAKE_EVENT_NAME = "ShakeEvent";
@@ -19,9 +19,15 @@ const TabBarStyled = styled(TabBar).attrs({
 `;
 
 export const BeerTypeTabsController = () => {
-
     const [sortType, setSortType] = React.useState<SortType>("name_ascending");
     const [showSortDialog, setShowSortDialog] = React.useState(false);
+    const [index, setIndex] = React.useState(0);
+    const initialLayout = {width: Dimensions.get('window').width};
+    const [routes] = React.useState([
+        {key: 'all', title: 'ALL'},
+        {key: 'pizza', title: 'PIZZA'},
+        {key: 'steak', title: 'STEAK'},
+    ]);
 
     useEffect(() => {
         RNShake.addEventListener(SHAKE_EVENT_NAME, () => {
@@ -35,16 +41,7 @@ export const BeerTypeTabsController = () => {
         }
     }, [sortType]);
 
-
-    const [index, setIndex] = React.useState(0);
-    const [routes] = React.useState([
-        {key: 'all', title: 'ALL'},
-        {key: 'pizza', title: 'PIZZA'},
-        {key: 'steak', title: 'STEAK'},
-    ]);
-    const initialLayout = {width: Dimensions.get('window').width};
-
-    const renderScene = ({ route }: any) => {
+    const renderScene = ({route}: any) => {
         switch (route.key) {
             case 'all':
                 return <BeerSection key={1} sortType={sortType}/>;

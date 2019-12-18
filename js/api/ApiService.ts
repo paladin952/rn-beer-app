@@ -26,14 +26,11 @@ export default class ApiService {
                 return beers;
             });
 
-        return sort(data, sortType);
+        return sort([...data], sortType);
     }
 }
 
 const sort = (data: Beer[], sortType?: SortType): Beer[] => {
-    // sortType = "abv_descending";
-    // sortType = "name_ascending";
-
     if (sortType === "abv_ascending") {
         data.sort((a,b) => (a.abv > b.abv) ? 1 : ((b.abv > a.abv) ? -1 : 0));
         return data;

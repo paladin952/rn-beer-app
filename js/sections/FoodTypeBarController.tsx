@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
-import {Dimensions, StyleSheet, View} from 'react-native';
-import {TabView, SceneMap, TabBar, SceneRendererProps, Route, NavigationState} from 'react-native-tab-view';
+import {Dimensions} from 'react-native';
+import {TabView, TabBar, SceneRendererProps} from 'react-native-tab-view';
 import {Colors} from "../types/Colors";
 //@ts-ignore
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome'
@@ -24,8 +24,20 @@ const EmptyPage = styled.Text`
   text-align: center;
 `;
 
-export const FoodTypeBarController = () => {
+const IconContainer = styled.View`
+  background-color: ${props => props.backgroundColor};
+  margin-top: 10;
+  height: 100%;
+  padding-left: 30;
+  padding-right: 30;
+  padding-bottom: 9;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 15;
+  border-top-right-radius: 15;
+`;
 
+export const FoodTypeBarController = () => {
     const [index, setIndex] = React.useState(0);
     const [routes] = React.useState([
         {key: 'drink', title: 'ALL', index: 0, icon: <FontAwesomeIcon icon={faCoffee}/>},
@@ -35,7 +47,7 @@ export const FoodTypeBarController = () => {
     ]);
     const initialLayout = {width: Dimensions.get('window').width};
 
-    const renderScene = ({ route }: any) => {
+    const renderScene = ({route}: any) => {
         switch (route.key) {
             case 'drink':
                 return <BeerTypeTabsController/>;
@@ -55,11 +67,7 @@ export const FoodTypeBarController = () => {
         const backgroundColor = route.index === index ? Colors.ACCENT : Colors.PRIMARY;
 
         return (
-            <View
-                style={[styles.text, {backgroundColor},]}
-            >
-                {route.icon}
-            </View>
+            <IconContainer backgroundColor={backgroundColor}>{route.icon}</IconContainer>
         );
     };
 
@@ -84,39 +92,3 @@ export const FoodTypeBarController = () => {
         />
     );
 };
-
-
-const styles = StyleSheet.create({
-    text: {
-        marginTop: 10,
-        height: '100%',
-        paddingLeft: 30,
-        paddingRight: 30,
-        paddingBottom: 9,
-        justifyContent: "center",
-        alignItems: "center",
-        borderTopLeftRadius: 15,
-        borderTopRightRadius: 15
-    },
-    tabStyle: {
-        opacity: 1,
-        paddingTop: 0,
-        paddingLeft: 0,
-        paddingRight: 0,
-        paddingBottom: 0,
-        backgroundColor: "red",
-    },
-    tab: {
-        backgroundColor: "red",
-        paddingRight: 5,
-        paddingLeft: 20,
-        paddingTop: 20,
-        marginTop: 2,
-    },
-    indicator: {
-        backgroundColor: 'transparent',
-    },
-    content: {
-        padding: 20,
-    },
-});

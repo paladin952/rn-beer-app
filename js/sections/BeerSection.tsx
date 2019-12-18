@@ -1,12 +1,12 @@
 import {useEffect} from "react";
 import {FlatList} from "react-native";
-import ApiService from "../../api/ApiService";
-import {Beer, SortType} from "../../types/Types";
+import ApiService from "../api/ApiService";
+import {Beer, SortType} from "../types/Types";
 import React from "react";
-import {BeerComponent} from "../../components/Beer.component";
+import {BeerComponent} from "../components/Beer.component";
 import {Dimensions} from "react-native";
 import styled from "styled-components/native";
-import {BeerDialogComponent} from "../../components/BeerDialog.components";
+import {BeerDialogComponent} from "../components/BeerDialog.components";
 
 const screenWidth = Math.round(Dimensions.get('window').width);
 const MARGIN = 12;
