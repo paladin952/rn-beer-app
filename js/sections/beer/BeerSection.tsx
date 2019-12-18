@@ -1,12 +1,12 @@
 import {useEffect} from "react";
 import {FlatList} from "react-native";
-import ApiService from "../api/ApiService";
-import {Beer} from "../types/Types";
+import ApiService from "../../api/ApiService";
+import {Beer} from "../../types/Types";
 import React from "react";
-import {BeerComponent} from "./Beer.component";
+import {BeerComponent} from "../../components/Beer.component";
 import {Dimensions} from "react-native";
 import styled from "styled-components/native";
-import {BeerDialogComponent} from "./BeerDialog.components";
+import {BeerDialogComponent} from "../../components/BeerDialog.components";
 
 const screenWidth = Math.round(Dimensions.get('window').width);
 const MARGIN = 12;
@@ -14,16 +14,16 @@ const NUMBER_OF_COLUMNS = 3;
 
 const Margin = styled.View`
   margin-left: ${MARGIN};
-  margin-bottom: ${2 * MARGIN};
+  margin-top: ${2 * MARGIN};
 `;
 
 interface Props {
-    foodPairing: string;
+    foodPairing?: string;
 }
 
-export const BeerSection: React.FC<Props> = ({foodPairing}) => {
+const BeerSectionInternal: React.FC<Props> = ({foodPairing}) => {
     const [beers, setBeers] = React.useState<Beer[]>([]);
-    const [dialogData, setDialogData] = React.useState<Beer| null>(null);
+    const [dialogData, setDialogData] = React.useState<Beer | null>(null);
 
     const itemWidth = (screenWidth - MARGIN * (NUMBER_OF_COLUMNS + 1)) / NUMBER_OF_COLUMNS;
     const itemHeight = itemWidth * 1.5;
@@ -59,3 +59,5 @@ export const BeerSection: React.FC<Props> = ({foodPairing}) => {
             }}/>}
     </>)
 };
+
+export const BeerSection = React.memo(BeerSectionInternal);

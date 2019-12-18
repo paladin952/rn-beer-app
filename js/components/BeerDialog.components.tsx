@@ -3,6 +3,7 @@ import styled from "styled-components/native";
 import {Modal, Alert} from 'react-native';
 import {Beer} from "../types/Types";
 import {BlurView} from "@react-native-community/blur";
+import {Colors} from "../types/Colors";
 
 
 interface Props {
@@ -22,7 +23,7 @@ const Root = styled(BlurView).attrs({
 
 const Container = styled.View`
   width: 90%;
-  background-color: #363536;
+  background-color: ${Colors.ACCENT};
   border-radius: 20;
   padding-top: 24;
   padding-left: 24;
@@ -103,7 +104,7 @@ const collapse = (text: String) => {
     }
 
     return text;
-}
+};
 
 export const BeerDialogComponent: React.FC<Props> = ({beer, onClose}) => {
     return <Modal

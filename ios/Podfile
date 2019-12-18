@@ -38,6 +38,10 @@ target 'RNBeerApp' do
 
   pod 'react-native-shake', :path => '../node_modules/react-native-shake'
 
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
+  pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
+
   target 'RNBeerAppTests' do
     inherit! :search_paths
     # Pods for testing

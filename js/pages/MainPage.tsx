@@ -1,7 +1,8 @@
 import React, {useEffect} from "react";
 import styled from "styled-components/native"
-import {BeerSection} from "../components/BeerSection";
 import RNShake from 'react-native-shake';
+import {BeerTypeTabsController} from "../sections/BeerTypeTabsController";
+import {FoodTypeBarController} from "../sections/FoodTypeBarController";
 
 
 const RootContainer = styled.View`
@@ -15,7 +16,7 @@ export const MainPage = () => {
 
     useEffect(() => {
         RNShake.addEventListener(SHAKE_EVENT_NAME, () => {
-            console.log("on shake");
+            // TODO
         });
 
         return () => {
@@ -25,7 +26,7 @@ export const MainPage = () => {
 
     return <RootContainer>
 
-        <BeerSection foodPairing={"pizza"}/>
+        <FoodTypeBarController/>
 
     </RootContainer>
 };
