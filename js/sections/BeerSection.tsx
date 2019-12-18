@@ -6,7 +6,7 @@ import React from "react";
 import {BeerComponent} from "../components/Beer.component";
 import {Dimensions} from "react-native";
 import styled from "styled-components/native";
-import {BeerDialogComponent} from "../components/BeerDialog.components";
+import {BeerDialogComponent} from "../components/BeerDetailsDialog";
 
 const screenWidth = Math.round(Dimensions.get('window').width);
 const MARGIN = 12;
