@@ -8,10 +8,8 @@ const getBeersUrl = (foodPairing?: string) => {
     if (foodPairing) {
         return GET_BEER_URL + "?food=" + foodPairing;
     }
-
     return GET_BEER_URL;
 };
-
 
 
 export default class ApiService {

@@ -13,6 +13,7 @@ const StatusBarContainer = styled.View`
 const TopBar = styled.View`
   width: 100%;
   height: 56;
+  padding-top: 24;
   background-color: ${Colors.PRIMARY};
   justify-content: center;
   align-items: center;

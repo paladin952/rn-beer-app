@@ -3,6 +3,7 @@ import styled from "styled-components/native";
 import {Dimensions, StyleSheet, View} from 'react-native';
 import {TabView, SceneMap, TabBar, SceneRendererProps, Route, NavigationState} from 'react-native-tab-view';
 import {Colors} from "../types/Colors";
+//@ts-ignore
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome'
 import {faCoffee, faPiggyBank, faFootballBall, faSearch} from '@fortawesome/free-solid-svg-icons'
 import {BeerTypeTabsController} from "./BeerTypeTabsController";
@@ -17,15 +18,9 @@ const TabBarStyled = styled(TabBar).attrs({
   margin: 0
 `;
 
-const EmptyPage1 = styled.Text`
+const EmptyPage = styled.Text`
   flex: 1;
   background-color: aqua;
-  text-align: center;
-`;
-
-const EmptyPage2 = styled.Text`
-  flex: 1;
-  background-color:blue;
   text-align: center;
 `;
 
@@ -42,13 +37,13 @@ export const FoodTypeBarController = () => {
 
     const renderScene = SceneMap({
         drink: () => (<BeerTypeTabsController/>),
-        all: () => (<EmptyPage1>All foods</EmptyPage1>),
-        all2: () => (<EmptyPage1>Snacks</EmptyPage1>),
-        all3: () => (<EmptyPage1>Search</EmptyPage1>)
+        all: () => (<EmptyPage>All foods</EmptyPage>),
+        all2: () => (<EmptyPage>Snacks</EmptyPage>),
+        all3: () => (<EmptyPage>Search</EmptyPage>)
     });
 
 
-    const renderLabel = (scene) => {
+    const renderLabel = (scene: any) => {
         const {route} = scene;
         const backgroundColor = route.index === index ? Colors.ACCENT : Colors.PRIMARY;
 
@@ -72,6 +67,7 @@ export const FoodTypeBarController = () => {
     return (
         <TabView
             style={{padding: 0, margin: 0}}
+            //@ts-ignore
             navigationState={{index, routes}}
             renderScene={renderScene}
             onIndexChange={setIndex}
@@ -82,12 +78,6 @@ export const FoodTypeBarController = () => {
     );
 };
 
-// import React from 'react';
-// import { StyleSheet, Animated, View, Text } from 'react-native';
-// import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
-//
-const activeBg = '#384153';
-const activeText = '#ffffff';
 
 const styles = StyleSheet.create({
     text: {
@@ -121,87 +111,5 @@ const styles = StyleSheet.create({
     },
     content: {
         padding: 20,
-        backgroundColor: activeBg
-    },
-    contentText: {
-        color: activeText,
     },
 });
-//
-// const FirstRoute = () => (
-//     <View style={styles.content}>
-//         <Text style={styles.contentText}>First</Text>
-//     </View>
-// );
-// const SecondRoute = () => (
-//     <View style={styles.content}>
-//         <Text style={styles.contentText}>Second</Text>
-//     </View>
-// );
-// const ThirdRoute = () => (
-//     <View style={styles.content}>
-//         <Text style={styles.contentText}>Third</Text>
-//     </View>
-// );
-// const FourthRoute = () => (
-//     <View style={styles.content}>
-//         <Text style={styles.contentText}>Fourth</Text>
-//     </View>
-// );
-//
-// export class FoodTypeBarController2 extends React.Component {
-//     state = {
-//         index: 0,
-//         routes: [
-//             { key: 'first', title: 'First', index: 0 },
-//             { key: 'second', title: 'Second', index: 1},
-//             { key: 'third', title: 'Third', index: 2 },
-//             { key: 'fourth', title: 'Fourth', index: 3 },
-//         ],
-//     };
-//
-//     _renderLabel = (scene) => {
-//         const { route } = scene;
-//         const backgroundColor = route.index === this.state.index? "gray" : "red";
-//
-//         return (
-//             <Animated.Text
-//                 numberOfLines={1}
-//                 style={[
-//                     styles.text,
-//                     {
-//                         color: "white",
-//                         backgroundColor,
-//                     },
-//                 ]}
-//             >
-//                 {"aaa"}
-//             </Animated.Text>
-//         );
-//     };
-//
-//     render() {
-//         return (
-//             <TabView
-//                 navigationState={this.state}
-//                 renderScene={SceneMap({
-//                     first: FirstRoute,
-//                     second: SecondRoute,
-//                     third: ThirdRoute,
-//                     fourth: FourthRoute,
-//                 })}
-//                 renderTabBar={props => (
-//                     <TabBar
-//                         {...props}
-//                         renderLabel={this._renderLabel}
-//                         getLabelText={({ route: { title } }) => title}
-//                         indicatorStyle={styles.indicator}
-//                         tabStyle={styles.tabStyle}
-//                         style={styles.tab}
-//                     />
-//                 )}
-//                 onIndexChange={index => this.setState({ index })}
-//             />
-//         );
-//     }
-// }

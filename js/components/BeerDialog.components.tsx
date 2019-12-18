@@ -4,6 +4,7 @@ import {Modal, Alert} from 'react-native';
 import {Beer} from "../types/Types";
 import {BlurView} from "@react-native-community/blur";
 import {Colors} from "../types/Colors";
+import {CloseButton} from "./CloseButton.component";
 
 
 interface Props {
@@ -11,10 +12,15 @@ interface Props {
     onClose: () => void;
 }
 
-const Root = styled(BlurView).attrs({
+const BlurViewStyled = styled(BlurView).attrs({
     blurType: "light",
     blurAmount: 10
 })`
+  flex: 1;
+  position: absolute;
+`;
+
+const Root = styled.View`
   flex: 1;
   background-color: #00000088;
   align-items: center;
@@ -50,18 +56,6 @@ const CloseContainer = styled.View`
   align-items: flex-start;
 `;
 
-const CloseButtonText = styled.Text`
-  font-weight: bold;
-`;
-const CloseButtonTouchable = styled.TouchableOpacity`
-  background-color: red;
-  border-radius: 12;
-  padding-top: 8;
-  padding-left: 8;
-  padding-right: 8;
-  padding-bottom: 8;
-  margin-bottom: 6;
-`;
 
 const BeerImage = styled.Image.attrs({
     resizeMode: "contain"
@@ -81,15 +75,7 @@ const BeerImageContainer = styled.View`
   margin-left: 12;
 `;
 
-interface CloseButtonProps {
-    onPress: () => void;
-}
 
-const CloseButton: React.FC<CloseButtonProps> = ({onPress}) => {
-    return <CloseButtonTouchable onPress={onPress}>
-        <CloseButtonText>CLOSE</CloseButtonText>
-    </CloseButtonTouchable>
-};
 
 const TextContainer = styled.View`
   flex: 1;
@@ -107,14 +93,13 @@ const collapse = (text: String) => {
 };
 
 export const BeerDialogComponent: React.FC<Props> = ({beer, onClose}) => {
-    return <Modal
-        animationType="slide"
+    return (<Modal
+        animationType={"fade"}
         transparent={true}
         visible={true}
-        onRequestClose={() => {
-            Alert.alert('Modal has been closed.');
-        }}>
+    >
         <Root>
+            <BlurViewStyled/>
             <CloseContainer>
                 <CloseButton onPress={() => onClose()}/>
             </CloseContainer>
@@ -132,7 +117,6 @@ export const BeerDialogComponent: React.FC<Props> = ({beer, onClose}) => {
                     <BeerImage source={{uri: beer.image_url? beer.image_url : ""}}/>
                 </BeerImageContainer>
             </Container>
-
         </Root>
-    </Modal>
+    </Modal>);
 };
