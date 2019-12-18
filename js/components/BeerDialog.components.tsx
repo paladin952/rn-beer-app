@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
-import {Modal, Alert} from 'react-native';
+import {Modal} from 'react-native';
 import {Beer} from "../types/Types";
 import {BlurView} from "@react-native-community/blur";
 import {Colors} from "../types/Colors";

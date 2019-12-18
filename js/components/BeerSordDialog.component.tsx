@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components/native";
-import {Modal, TouchableOpacity, Text} from 'react-native';
-import {BlurView} from "@react-native-community/blur";
+import {Modal, TouchableOpacity} from 'react-native';
 import {Colors} from "../types/Colors";
 import {CloseButton} from "./CloseButton.component";
+import {SortType} from "../types/Types";
 
 
 interface Props {
     onClose: () => void;
-    onSelect: (type: string) => void;
+    onSelect: (type: SortType) => void;
 }
 
 const Root = styled.View`
@@ -46,9 +46,9 @@ const ElementText = styled.Text`
   font-size: 16;
 `;
 
-const Element: React.FC<ClickableProps> = ({onPress}) => {
+const Element: React.FC<ClickableProps & {text: SortType}> = ({onPress, text}) => {
     return <TouchableOpacity onPress={onPress}>
-        <ElementText>TEST</ElementText>
+        <ElementText>{text}</ElementText>
     </TouchableOpacity>
 };
 
@@ -63,11 +63,11 @@ export const BeerSordDialogComponent: React.FC<Props> = ({onClose, onSelect}) =>
             <CloseContainer>
                 <CloseButton onPress={() => onClose()}/>
             </CloseContainer>
-
             <Container>
-                <Element onPress={() => onSelect("a")}></Element>
-                <Element onPress={() => onSelect("b")}></Element>
-                <Element onPress={() => onSelect("c")}></Element>
+                <Element text={"abv_ascending"} onPress={() => onSelect("abv_ascending")}/>
+                <Element text={"abv_descending"} onPress={() => onSelect("abv_descending")}/>
+                <Element text={"name_ascending"} onPress={() => onSelect("name_ascending")}/>
+                <Element text={"name_descending"} onPress={() => onSelect("name_descending")}/>
             </Container>
         </Root>
     </Modal>);

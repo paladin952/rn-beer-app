@@ -1,12 +1,13 @@
 import React, {useEffect} from "react";
 import styled from "styled-components/native";
 import {Dimensions, Text} from 'react-native';
-import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
+import {TabView, TabBar} from 'react-native-tab-view';
 import {Colors} from "../types/Colors";
 //@ts-ignore
 import RNShake from 'react-native-shake';
 import {BeerSordDialogComponent} from "../components/BeerSordDialog.component";
 import BeerSection from "./beer/BeerSection";
+import {SortType} from "../types/Types";
 
 const SHAKE_EVENT_NAME = "ShakeEvent";
 
@@ -19,19 +20,20 @@ const TabBarStyled = styled(TabBar).attrs({
 
 export const BeerTypeTabsController = () => {
 
-    const [sortType, setSortType] = React.useState("abv_desc");
+    const [sortType, setSortType] = React.useState<SortType>("name_ascending");
     const [showSortDialog, setShowSortDialog] = React.useState(false);
 
     useEffect(() => {
         RNShake.addEventListener(SHAKE_EVENT_NAME, () => {
-            console.log("lucitest shake");
-            setShowSortDialog(true);
+            setTimeout(() => {
+                setShowSortDialog(true);
+            }, 4000); // Add a delay so there is enough time to close the RN dev menu otherwise this pop-up won't appear in ios
         });
 
         return () => {
             RNShake.removeEventListener(SHAKE_EVENT_NAME);
         }
-    }, []);
+    }, [sortType]);
 
 
     const [index, setIndex] = React.useState(0);
@@ -79,6 +81,7 @@ export const BeerTypeTabsController = () => {
             {showSortDialog && <BeerSordDialogComponent
                 onSelect={type => {
                     setSortType(type);
+                    setShowSortDialog(false);
                 }}
                 onClose={() => setShowSortDialog(false)}
             />}
