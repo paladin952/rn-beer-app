@@ -11,8 +11,6 @@
 
 ### In order to test shake make sure that you close the RN DEV menu ASAP and then wait a few second to get the sorting pop-up. If you don't close the RN dev menu pop-up might not appear in ios
 
-
-
 ### User requirements
 1. As a user I want the application to show me beers using three different views (tabs):
     - beers that pair with pizza
@@ -36,3 +34,6 @@
     - name_ascending,
     - name_descending
 6. As a user I want to change the sort mode by shaking my device.
+
+
+![Alt text](public/1.png?raw=true "1")
