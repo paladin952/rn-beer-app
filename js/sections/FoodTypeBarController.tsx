@@ -35,13 +35,20 @@ export const FoodTypeBarController = () => {
     ]);
     const initialLayout = {width: Dimensions.get('window').width};
 
-    const renderScene = SceneMap({
-        drink: () => (<BeerTypeTabsController/>),
-        all: () => (<EmptyPage>All foods</EmptyPage>),
-        all2: () => (<EmptyPage>Snacks</EmptyPage>),
-        all3: () => (<EmptyPage>Search</EmptyPage>)
-    });
-
+    const renderScene = ({ route }: any) => {
+        switch (route.key) {
+            case 'drink':
+                return <BeerTypeTabsController/>;
+            case 'all':
+                return <EmptyPage>All foods</EmptyPage>;
+            case 'all2':
+                return <EmptyPage>Snacks</EmptyPage>;
+            case 'all3':
+                return <EmptyPage>Search</EmptyPage>;
+            default:
+                return null;
+        }
+    };
 
     const renderLabel = (scene: any) => {
         const {route} = scene;
