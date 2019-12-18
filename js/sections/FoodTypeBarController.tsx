@@ -40,10 +40,10 @@ const IconContainer = styled.View`
 export const FoodTypeBarController = () => {
     const [index, setIndex] = React.useState(0);
     const [routes] = React.useState([
-        {key: 'drink', title: 'ALL', index: 0, icon: <FontAwesomeIcon icon={faCoffee}/>},
-        {key: 'all', title: 'PIZZA', index: 1, icon: <FontAwesomeIcon icon={faPiggyBank}/>},
-        {key: 'all2', title: 'PIZZA', index: 2, icon: <FontAwesomeIcon icon={faFootballBall}/>},
-        {key: 'all3', title: 'PIZZA', index: 3, icon: <FontAwesomeIcon icon={faSearch}/>},
+        {key: 'drink', index: 0, icon: <FontAwesomeIcon icon={faCoffee}/>},
+        {key: 'all', index: 1, icon: <FontAwesomeIcon icon={faPiggyBank}/>},
+        {key: 'all2', index: 2, icon: <FontAwesomeIcon icon={faFootballBall}/>},
+        {key: 'all3', index: 3, icon: <FontAwesomeIcon icon={faSearch}/>},
     ]);
     const initialLayout = {width: Dimensions.get('window').width};
 
