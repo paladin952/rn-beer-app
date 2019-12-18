@@ -18,10 +18,11 @@ const Margin = styled.View`
 `;
 
 interface Props {
+    sortType?: string,
     foodPairing?: string;
 }
 
-const BeerSectionInternal: React.FC<Props> = ({foodPairing}) => {
+const BeerSectionInternal: React.FC<Props> = ({foodPairing, sortType}) => {
     const [beers, setBeers] = React.useState<Beer[]>([]);
     const [dialogData, setDialogData] = React.useState<Beer | null>(null);
 
@@ -29,7 +30,7 @@ const BeerSectionInternal: React.FC<Props> = ({foodPairing}) => {
     const itemHeight = itemWidth * 1.5;
 
     async function loadData() {
-        const beers = await ApiService.getBeers(foodPairing);
+        const beers = await ApiService.getBeers(sortType, foodPairing);
         setBeers(beers);
     }
 
@@ -60,4 +61,4 @@ const BeerSectionInternal: React.FC<Props> = ({foodPairing}) => {
     </>)
 };
 
-export const BeerSection = React.memo(BeerSectionInternal);
+export default BeerSectionInternal;

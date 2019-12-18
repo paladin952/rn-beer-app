@@ -14,8 +14,8 @@ const getBeersUrl = (foodPairing?: string) => {
 
 export default class ApiService {
 
-    public static async getBeers(foodPairing?: string): Promise<Beer[]> {
-        return axios.get(getBeersUrl(foodPairing))
+    public static async getBeers(sortType?: string, foodPairing?: string): Promise<Beer[]> {
+        const data = await axios.get(getBeersUrl(foodPairing))
             .then(value => value.data)
             .then((beers: Beer[]) => {
                 return beers.filter((b: Beer) => b.image_url != null) // Remove beers without image
@@ -25,6 +25,12 @@ export default class ApiService {
                 }
                 return beers;
             })
+
+        // if(sortType) {
+        //
+        // }
+
+        return data;
     }
 
 }
