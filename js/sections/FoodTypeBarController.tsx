@@ -4,7 +4,7 @@ import {Dimensions, StyleSheet, View} from 'react-native';
 import {TabView, SceneMap, TabBar, SceneRendererProps, Route, NavigationState} from 'react-native-tab-view';
 import {Colors} from "../types/Colors";
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome'
-import {faCoffee, faFile, faFootballBall, faDatabase} from '@fortawesome/free-solid-svg-icons'
+import {faCoffee, faPiggyBank, faFootballBall, faSearch} from '@fortawesome/free-solid-svg-icons'
 import {BeerTypeTabsController} from "./BeerTypeTabsController";
 
 
@@ -17,38 +17,40 @@ const TabBarStyled = styled(TabBar).attrs({
   margin: 0
 `;
 
-const EmptyPage1 = styled.View`
+const EmptyPage1 = styled.Text`
   flex: 1;
   background-color: aqua;
+  text-align: center;
 `;
 
-const EmptyPage2 = styled.View`
+const EmptyPage2 = styled.Text`
   flex: 1;
   background-color:blue;
+  text-align: center;
 `;
 
 export const FoodTypeBarController = () => {
 
     const [index, setIndex] = React.useState(0);
     const [routes] = React.useState([
-        {key: 'drink', title: 'ALL',  index: 0, icon: <FontAwesomeIcon icon={faCoffee}/>},
-        {key: 'all', title: 'PIZZA',  index: 1, icon: <FontAwesomeIcon icon={faFile}/>},
-        {key: 'all2', title: 'PIZZA',  index: 2, icon: <FontAwesomeIcon icon={faFootballBall}/>},
-        {key: 'all3', title: 'PIZZA',  index: 3, icon: <FontAwesomeIcon icon={faDatabase}/>},
+        {key: 'drink', title: 'ALL', index: 0, icon: <FontAwesomeIcon icon={faCoffee}/>},
+        {key: 'all', title: 'PIZZA', index: 1, icon: <FontAwesomeIcon icon={faPiggyBank}/>},
+        {key: 'all2', title: 'PIZZA', index: 2, icon: <FontAwesomeIcon icon={faFootballBall}/>},
+        {key: 'all3', title: 'PIZZA', index: 3, icon: <FontAwesomeIcon icon={faSearch}/>},
     ]);
     const initialLayout = {width: Dimensions.get('window').width};
 
     const renderScene = SceneMap({
         drink: () => (<BeerTypeTabsController/>),
-        all: () => (<EmptyPage1/>),
-        all2: () => (<EmptyPage2/>),
-        all3: () => (<EmptyPage1/>)
+        all: () => (<EmptyPage1>All foods</EmptyPage1>),
+        all2: () => (<EmptyPage1>Snacks</EmptyPage1>),
+        all3: () => (<EmptyPage1>Search</EmptyPage1>)
     });
 
 
     const renderLabel = (scene) => {
-        const { route } = scene;
-        const backgroundColor = route.index === index? Colors.ACCENT : Colors.PRIMARY;
+        const {route} = scene;
+        const backgroundColor = route.index === index ? Colors.ACCENT : Colors.PRIMARY;
 
         return (
             <View
