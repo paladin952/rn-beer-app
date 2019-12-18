@@ -7,6 +7,7 @@
     - pod install
     - cd ..
     - yarn react-native run-ios or yarn react-native run-android
+    - in android you need to add local.properties with sdk.dir=/Users/[YOUR_USER]/Library/Android/sdk PATH
 
 ### In order to test shake make sure that you close the RN DEV menu ASAP and then wait a few second to get the sorting pop-up. If you don't close the RN dev menu pop-up might not appear in ios
 
